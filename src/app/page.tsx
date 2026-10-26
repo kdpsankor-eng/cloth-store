@@ -47,7 +47,7 @@ export default async function HomePage() {
     settingsMap["hero_subtitle"] || "সেরা মানের কটন, সিল্ক ও জর্জেট কালেকশন এখন বিশেষ অফারে।";
   const heroImage =
     settingsMap["hero_banner_image"] ||
-    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1600&q=80";
+    "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1600&q=80";
   const announcement = settingsMap["announcement_bn"];
   const phone = settingsMap["site_phone"];
 

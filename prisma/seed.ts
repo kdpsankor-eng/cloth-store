@@ -40,7 +40,7 @@ async function main() {
     { key: "announcement_bn", value: "✨ সারা দেশে দ্রুততম ক্যাশ অন ডেলিভারি | অগ্রিম কোনো টাকা ছাড়াই ঘরে বসে অর্ডার করুন!", description: "Top Bar Announcement" },
     { key: "hero_title", value: "আভিজাত্য ও ঐতিহ্যের সেরা ফ্যাশন ও ফেব্রিক্স কালেকশন", description: "Hero Title" },
     { key: "hero_subtitle", value: "প্রিমিয়াম পাঞ্জাবী, বোরকা কাপড় এবং আনস্টিচড সালোয়ার কামিজের আকর্ষণীয় সমাহার।", description: "Hero Subtitle" },
-    { key: "hero_banner_image", value: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1600&q=80", description: "Homepage Hero Banner Image" }
+    { key: "hero_banner_image", value: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1600&q=80", description: "Homepage Hero Banner Image" }
   ];
 
   for (const s of settings) {
@@ -346,7 +346,7 @@ async function main() {
             isThumbnail: true,
           },
           {
-            imageUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
+            imageUrl: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80",
             altText: "Fabric Embroidery Detail",
             displayOrder: 2,
           }
