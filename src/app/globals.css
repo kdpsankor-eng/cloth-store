@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Luxury Palette from architecture.md */
+  --primary-burgundy: #762A43;
+  --primary-burgundy-hover: #5E2034;
+  --secondary-ivory: #F7F0E8;
+  --accent-gold: #C5A46D;
+  --accent-gold-hover: #B5935A;
+  --text-charcoal: #252525;
+  --text-muted: #666666;
+  --surface-white: #FFFFFF;
+  --background-muted: #F8F9FA;
+  --border-subtle: #E8E8E8;
+  --color-success: #238636;
+  --color-error: #D92D20;
+}
+
+@theme {
+  --color-brand-burgundy: #762A43;
+  --color-brand-burgundy-hover: #5E2034;
+  --color-brand-ivory: #F7F0E8;
+  --color-brand-gold: #C5A46D;
+  --color-brand-gold-hover: #B5935A;
+  --color-brand-charcoal: #252525;
+  --color-brand-muted: #F8F9FA;
+  --color-brand-border: #E8E8E8;
+
+  --font-siliguri: var(--font-siliguri), sans-serif;
+  --font-outfit: var(--font-outfit), sans-serif;
+}
+
+body {
+  font-family: var(--font-siliguri), var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-charcoal);
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Numerals & Bangladeshi Taka Currency Formatting */
+.tabular-nums, .price-display, .digit-display {
+  font-family: var(--font-outfit), var(--font-siliguri), sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Smooth Scrolling & Transition Defaults */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Scrollbar for Luxury Aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A46D;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #762A43;
+}

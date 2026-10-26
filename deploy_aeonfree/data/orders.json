@@ -1,0 +1,29 @@
+[
+  {
+    "orderNumber": "WCS-261024-5997",
+    "customerName": "ফারহানা হক",
+    "customerPhone": "01799887766",
+    "deliveryAddress": "বাড়ি ১২, রোড ৫, সেক্টর ৩, উত্তরা, ঢাকা",
+    "deliveryZone": "INSIDE_DHAKA",
+    "orderNotes": "সন্ধ্যা ৬টার পর ডেলিভারি দিলে ভালো হয়",
+    "subtotal": 2350,
+    "deliveryCharge": 80,
+    "totalPayable": 2430,
+    "orderStatus": "CONFIRMED",
+    "paymentMethod": "CASH_ON_DELIVERY",
+    "paymentStatus": "UNPAID",
+    "courierName": "Steadfast Courier",
+    "trackingCode": "ST-984210",
+    "createdAt": "2026-10-24T10:16:33Z",
+    "items": [
+      {
+        "productId": "prod_1",
+        "productNameSnapshot": "লাক্সারি হ্যান্ড এমব্রয়ডারি কটন থ্রি-পিস",
+        "variantNameSnapshot": "38 - মেরুন / Burgundy",
+        "unitPriceSnapshot": 2350,
+        "quantity": 1,
+        "lineTotal": 2350
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cat_1",
+    "name": "Panjabi Collection",
+    "nameBn": "পাঞ্জাবী",
+    "slug": "panjabi",
+    "description": "আভিজাত্য ও ঐতিহ্যের মেলবন্ধনে প্রিমিয়াম সুতি ও সিল্ক পাঞ্জাবী কালেকশন",
+    "imageUrl": "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80",
+    "displayOrder": 1,
+    "subcategories": [
+      { "id": "sub_1_1", "name": "কটন সুতি পাঞ্জাবী", "slug": "cotton-panjabi" },
+      { "id": "sub_1_2", "name": "জ্যাকার্ড উৎসব পাঞ্জাবী", "slug": "jacquard-panjabi" },
+      { "id": "sub_1_3", "name": "লিনেন ক্যাজুয়াল পাঞ্জাবী", "slug": "linen-panjabi" }
+    ]
+  },
+  {
+    "id": "cat_2",
+    "name": "Burqa & Abaya Fabrics",
+    "nameBn": "বোরকা কাপড়",
+    "slug": "burqa-fabric",
+    "description": "১০০% অরিজিনাল দুবাই চেরি, নিদা ও প্রিমিয়াম জর্জেট আনস্টিচড বোরকা কাপড়",
+    "imageUrl": "https://images.unsplash.com/photo-1585728748178-577629ad05f1?auto=format&fit=crop&w=600&q=80",
+    "displayOrder": 2,
+    "subcategories": [
+      { "id": "sub_2_1", "name": "দুবাই চেরি কাপড় (৪.৫ গজ)", "slug": "cherry-fabric" },
+      { "id": "sub_2_2", "name": "কোরিয়ান নিদা সিল্ক কাপড়", "slug": "nida-silk" },
+      { "id": "sub_2_3", "name": "এমব্রয়ডারি জর্জেট কাপড় পিস", "slug": "georgette-piece" }
+    ]
+  },
+  {
+    "id": "cat_3",
+    "name": "Salwar Kameez Fabrics",
+    "nameBn": "সালোয়ার কামিজ কাপড়",
+    "slug": "salwar-kameez",
+    "description": "১০০% পিওর কটন, সিল্ক ও বুটিক আনস্টিচড থ্রি-পিস ও কামিজ ড্রেস মেটেরিয়াল কাপড়",
+    "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80",
+    "displayOrder": 3,
+    "subcategories": [
+      { "id": "sub_3_1", "name": "কটন আনস্টিচড থ্রি-পিস কাপড়", "slug": "cotton-unstitched" },
+      { "id": "sub_3_2", "name": "তসর সিল্ক ড্রেস মেটেরিয়াল", "slug": "silk-dress-material" },
+      { "id": "sub_3_3", "name": "ডিজিটাল লন কটন কাপড়", "slug": "lawn-cotton" }
+    ]
+  }
+]

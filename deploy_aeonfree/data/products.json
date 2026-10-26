@@ -1,0 +1,225 @@
+[
+  {
+    "id": "prod_1",
+    "name": "Exclusive Semi-Long Embroidered Cotton Panjabi",
+    "nameBn": "এক্সক্লুসিভ সেমি-লং এমব্রয়ডারি কটন পাঞ্জাবী",
+    "slug": "exclusive-semi-long-embroidered-cotton-panjabi",
+    "sku": "PJ-2026-001",
+    "description": "১০০% প্রিমিয়াম সুতি কাপড়ে নিখুঁত কলার ও প্লাকেটে কম্পিউটার এমব্রয়ডারি ডিজাইন। অত্যন্ত আরামদায়ক ফিটিং এবং যেকোনো উৎসব ও জুমার নামাজের জন্য উপযোগী। সাথে আকর্ষণীয় মেটাল বাটন ও সাইড পকেট।",
+    "regularPrice": 2450,
+    "salePrice": 1950,
+    "costPrice": 1250,
+    "categorySlug": "panjabi",
+    "categoryNameBn": "পাঞ্জাবী",
+    "isFeatured": true,
+    "hasSizeVariants": true,
+    "sizeSelectionRequired": true,
+    "availableSizes": "40, 42, 44",
+    "images": [
+      "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_1_40", "size": "40", "color": "ডিপ নেভি ব্লু / Navy Blue", "stockQuantity": 15 },
+      { "id": "var_1_42", "size": "42", "color": "ডিপ নেভি ব্লু / Navy Blue", "stockQuantity": 20 },
+      { "id": "var_1_44", "size": "44", "color": "ডিপ নেভি ব্লু / Navy Blue", "stockQuantity": 12 }
+    ]
+  },
+  {
+    "id": "prod_2",
+    "name": "Royal Jacquard Weaving Festive Panjabi",
+    "nameBn": "রয়্যাল জ্যাকার্ড উইভিং প্রিমিয়াম পাঞ্জাবী",
+    "slug": "royal-jacquard-weaving-festive-panjabi",
+    "sku": "PJ-2026-002",
+    "description": "আভিজাত্যপূর্ণ রয়্যাল জ্যাকার্ড উইভিং টেক্সচারড ফ্যাব্রিকে তৈরি বিশেষ উৎসব পাঞ্জাবী। কলার ও হাতায় সূক্ষ্ম হ্যান্ড টাচ কাজের ফিনিশিং। বিয়ে বা ঈদের অনুষ্ঠানের জন্য সেরা পছন্দ।",
+    "regularPrice": 2950,
+    "salePrice": 2450,
+    "costPrice": 1500,
+    "categorySlug": "panjabi",
+    "categoryNameBn": "পাঞ্জাবী",
+    "isFeatured": true,
+    "hasSizeVariants": true,
+    "sizeSelectionRequired": true,
+    "availableSizes": "40, 42, 44",
+    "images": [
+      "https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_2_40", "size": "40", "color": "অফ-হোয়াইট ও গোল্ডেন", "stockQuantity": 10 },
+      { "id": "var_2_42", "size": "42", "color": "অফ-হোয়াইট ও গোল্ডেন", "stockQuantity": 15 },
+      { "id": "var_2_44", "size": "44", "color": "অফ-হোয়াইট ও গোল্ডেন", "stockQuantity": 8 }
+    ]
+  },
+  {
+    "id": "prod_3",
+    "name": "Casual Soft Linen Cotton Solid Panjabi",
+    "nameBn": "ক্যাজুয়াল সফট লিনেন কটন পাঞ্জাবী",
+    "slug": "casual-soft-linen-cotton-solid-panjabi",
+    "sku": "PJ-2026-003",
+    "description": "অত্যন্ত আরামদায়ক পিওর সফট লিনেন কটন কাপড়। গরমে পরার জন্য সর্বোচ্চ প্রশান্তি দেবে। সাইড পকেট ও প্রিমিয়াম স্ন্যাপ বাটন সমৃদ্ধ।",
+    "regularPrice": 1850,
+    "salePrice": 1490,
+    "costPrice": 900,
+    "categorySlug": "panjabi",
+    "categoryNameBn": "পাঞ্জাবী",
+    "isFeatured": false,
+    "hasSizeVariants": true,
+    "sizeSelectionRequired": true,
+    "availableSizes": "38, 40, 42, 44",
+    "images": [
+      "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_3_38", "size": "38", "color": "অলিভ গ্রিন", "stockQuantity": 10 },
+      { "id": "var_3_40", "size": "40", "color": "অলিভ গ্রিন", "stockQuantity": 15 },
+      { "id": "var_3_42", "size": "42", "color": "অলিভ গ্রিন", "stockQuantity": 12 },
+      { "id": "var_3_44", "size": "44", "color": "অলিভ গ্রিন", "stockQuantity": 6 }
+    ]
+  },
+  {
+    "id": "prod_4",
+    "name": "Original Dubai Cherry Fabric Unstitched Burqa Cloth",
+    "nameBn": "অরিজিনাল দুবাই চেরি আনস্টিচড বোরকা কাপড় (৪.৫ গজ)",
+    "slug": "original-dubai-cherry-fabric-unstitched-burqa-cloth",
+    "sku": "BF-2026-001",
+    "description": "১০০% অরিজিনাল দুবাই চেরি ফেব্রিক বোরকা কাপড়। কুঁচকে যায় না, রোদে রং নষ্ট হয় না এবং বডি ট্র্যান্সপারেন্ট নয়। পুরো ১টি ফুল ঘের বোরকা ও কোটি তৈরির জন্য পর্যাপ্ত ৪.৫ গজ বড় বহর কাপড়। (শুধুমাত্র প্রিমিয়াম আনস্টিচড কাপড়)।",
+    "regularPrice": 2200,
+    "salePrice": 1750,
+    "costPrice": 1100,
+    "categorySlug": "burqa-fabric",
+    "categoryNameBn": "বোরকা কাপড়",
+    "isFeatured": true,
+    "hasSizeVariants": false,
+    "sizeSelectionRequired": false,
+    "availableSizes": "আনস্টিচড কাপড় (৪.৫ গজ বড় বহর)",
+    "images": [
+      "https://images.unsplash.com/photo-1585728748178-577629ad05f1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_4_blk", "size": "আনস্টিচড (৪.৫ গজ)", "color": "ডিপ জেট ব্ল্যাক", "stockQuantity": 35 },
+      { "id": "var_4_cof", "size": "আনস্টিচড (৪.৫ গজ)", "color": "ডার্ক কফি ব্রাউন", "stockQuantity": 20 }
+    ]
+  },
+  {
+    "id": "prod_5",
+    "name": "Premium Korean Nida Silk Unstitched Abaya Fabric",
+    "nameBn": "প্রিমিয়াম কোরিয়ান নিদা সিল্ক আনস্টিচড আবায়া ও বোরকা কাপড় (৫ গজ)",
+    "slug": "premium-korean-nida-silk-unstitched-abaya-fabric",
+    "sku": "BF-2026-002",
+    "description": "সিল্কি সফট ফিনিশ এবং অত্যন্ত আরামদায়ক কোরিয়ান নিদা প্রিমিয়াম ফেব্রিক। লং কোটি আবায়া ও সাথে ম্যাচিং হিজাব তৈরির জন্য ফুল ৫ গজ বড় বহর কাপড়। (শুধুমাত্র প্রিমিয়াম কাপড়, আনস্টিচড)।",
+    "regularPrice": 2600,
+    "salePrice": 2150,
+    "costPrice": 1350,
+    "categorySlug": "burqa-fabric",
+    "categoryNameBn": "বোরকা কাপড়",
+    "isFeatured": true,
+    "hasSizeVariants": false,
+    "sizeSelectionRequired": false,
+    "availableSizes": "আনস্টিচড কাপড় (৫ গজ বড় বহর)",
+    "images": [
+      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_5_rose", "size": "আনস্টিচড (৫ গজ)", "color": "ডাস্টি রোজ ও ব্ল্যাক", "stockQuantity": 25 }
+    ]
+  },
+  {
+    "id": "prod_6",
+    "name": "Heavy Georgette Embroidered Burqa Fabric Piece",
+    "nameBn": "হেভি জর্জেট এমব্রয়ডারি ওয়ার্ক বোরকা কাপড় পিস",
+    "slug": "heavy-georgette-embroidered-burqa-fabric-piece",
+    "sku": "BF-2026-003",
+    "description": "আকর্ষণীয় বুটা ও পার এমব্রয়ডারি করা প্রিমিয়াম ফক্স জর্জেট ফেব্রিক বোরকা কাপড়। পার্টি ও বিয়ের অনুষ্ঠানের গর্জিয়াস বোরকা তৈরির কাপড় পিস। (শুধুমাত্র কাপড়, আনস্টিচড)।",
+    "regularPrice": 2800,
+    "salePrice": 2290,
+    "costPrice": 1400,
+    "categorySlug": "burqa-fabric",
+    "categoryNameBn": "বোরকা কাপড়",
+    "isFeatured": false,
+    "hasSizeVariants": false,
+    "sizeSelectionRequired": false,
+    "availableSizes": "আনস্টিচড কাপড় (৪.৫ গজ)",
+    "images": [
+      "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_6_blue", "size": "আনস্টিচড (৪.৫ গজ)", "color": "রয়েল মিডনাইট ব্লু", "stockQuantity": 18 }
+    ]
+  },
+  {
+    "id": "prod_7",
+    "name": "Luxury Hand Embroidered Pure Cotton Unstitched Three-Piece Cloth",
+    "nameBn": "লাক্সারি হ্যান্ড এমব্রয়ডারি পিওর কটন আনস্টিচড থ্রি-পিস কাপড়",
+    "slug": "luxury-hand-embroidered-cotton-unstitched-three-piece",
+    "sku": "SK-2026-001",
+    "description": "১০০% পিওর মলমল কটন কামিজ কাপড় (বুটিক হ্যান্ড এমব্রয়ডারি সহ), আরামদায়ক কটন সালোয়ার কাপড় এবং ডিজিটাল প্রিন্ট পিওর সিল্ক ওড়না কাপড়। (শুধুমাত্র প্রিমিয়াম আনস্টিচড কাপড়)।",
+    "regularPrice": 2850,
+    "salePrice": 2350,
+    "costPrice": 1450,
+    "categorySlug": "salwar-kameez",
+    "categoryNameBn": "সালোয়ার কামিজ কাপড়",
+    "isFeatured": true,
+    "hasSizeVariants": false,
+    "sizeSelectionRequired": false,
+    "availableSizes": "আনস্টিচড থ্রি-পিস কাপড় (কামিজ ৩ গজ, সালোয়ার ২.৫ গজ, ওড়না ৫ হাত)",
+    "images": [
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_7_mrn", "size": "আনস্টিচড সেট", "color": "মেরুন ও বেইজ", "stockQuantity": 30 },
+      { "id": "var_7_grn", "size": "আনস্টিচড সেট", "color": "প্যাস্টেল মিন্ট গ্রিন", "stockQuantity": 20 }
+    ]
+  },
+  {
+    "id": "prod_8",
+    "name": "Traditional Tussar Silk Festive Unstitched Dress Material",
+    "nameBn": "ঐতিহ্যবাহী সফট তসর সিল্ক পার্টি আনস্টিচড ড্রেস মেটেরিয়াল কাপড়",
+    "slug": "traditional-tussar-silk-festive-unstitched-dress-material",
+    "sku": "SK-2026-002",
+    "description": "আভিজাত্যপূর্ণ সফট তসর সিল্ক কামিজ কাপড় (অল ওভার জরি উইভিং পার সহ), সেন্টুন সালোয়ার কাপড় ও রিচ উইভিং সিল্ক ওড়না কাপড়। যেকোনো উৎসব অনুষ্ঠানের জন্য অতুলনীয়। (শুধুমাত্র আনস্টিচড কাপড়)।",
+    "regularPrice": 3800,
+    "salePrice": 3150,
+    "costPrice": 2000,
+    "categorySlug": "salwar-kameez",
+    "categoryNameBn": "সালোয়ার কামিজ কাপড়",
+    "isFeatured": true,
+    "hasSizeVariants": false,
+    "sizeSelectionRequired": false,
+    "availableSizes": "আনস্টিচড থ্রি-পিস কাপড় সেট",
+    "images": [
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_8_mag", "size": "আনস্টিচড সেট", "color": "রয়্যাল মেজেন্টা ও গোল্ডেন", "stockQuantity": 22 }
+    ]
+  },
+  {
+    "id": "prod_9",
+    "name": "Premium Digital Printed Lawn Cotton Unstitched Three-Piece Fabric",
+    "nameBn": "ডিজিটাল প্রিন্টেড প্রিমিয়াম লন কটন আনস্টিচড থ্রি-পিস কাপড়",
+    "slug": "premium-digital-printed-lawn-cotton-unstitched-three-piece",
+    "sku": "SK-2026-003",
+    "description": "এক্সপোর্ট কোয়ালিটি সুইস লন কটন ডিজিটাল প্রিন্ট কামিজ কাপড়, ম্যাচিং সুতি ট্রাউজার কাপড় ও হালকা নরম শিফন ওড়না কাপড়। গরমের জন্য অত্যন্ত আরামদায়ক। (শুধুমাত্র আনস্টিচড কাপড়)।",
+    "regularPrice": 2150,
+    "salePrice": 1750,
+    "costPrice": 1050,
+    "categorySlug": "salwar-kameez",
+    "categoryNameBn": "সালোয়ার কামিজ কাপড়",
+    "isFeatured": false,
+    "hasSizeVariants": false,
+    "sizeSelectionRequired": false,
+    "availableSizes": "আনস্টিচড থ্রি-পিস কাপড়",
+    "images": [
+      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      { "id": "var_9_sea", "size": "আনস্টিচড সেট", "color": "সি-গ্রিন ও লেমন", "stockQuantity": 25 }
+    ]
+  }
+]

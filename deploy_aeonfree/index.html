@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অরণ্যা ফ্যাশন | প্রিমিয়াম ওম্যানস ফ্যাশন ওয়্যার হাউস</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Hind Siliguri & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              burgundy: '#762A43',
+              'burgundy-hover': '#5E2034',
+              ivory: '#F7F0E8',
+              gold: '#C5A46D',
+              charcoal: '#252525',
+              muted: '#F8F9FA'
+            }
+          },
+          fontFamily: {
+            bengali: ['"Hind Siliguri"', 'sans-serif'],
+            sans: ['"Outfit"', '"Hind Siliguri"', 'sans-serif'],
+            serif: ['Georgia', 'Cambria', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Hind Siliguri', 'Outfit', sans-serif; color: #252525; }
+    .tabular-nums { font-family: 'Outfit', 'Hind Siliguri', sans-serif; font-variant-numeric: tabular-nums; }
+    .product-img-box {
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+      background-color: #f3f4f6;
+    }
+    @media (max-width: 640px) {
+      .product-img-box { height: 260px; }
+    }
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col bg-white">
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 bg-[#762A43] text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-[#C5A46D]">
+    <span class="text-xl">🛍️</span>
+    <div>
+      <h5 class="text-xs font-bold" id="toastTitle">ব্যাগে যুক্ত হয়েছে!</h5>
+      <p class="text-[11px] text-gray-200" id="toastMessage">পণ্যটি আপনার শপিং ব্যাগে সংরক্ষিত হয়েছে।</p>
+    </div>
+  </div>
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="bg-[#762A43] text-[#F7F0E8] text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <p id="announcementText" class="font-medium truncate flex-1 text-center sm:text-left">
+        ✨ সারা দেশে দ্রুততম ক্যাশ অন ডেলিভারি | অগ্রিম কোনো টাকা ছাড়াই ঘরে বসে অর্ডার করুন!
+      </p>
+      <div class="hidden sm:flex items-center gap-4 text-xs shrink-0 font-medium">
+        <a href="track-order.html" class="flex items-center gap-1 hover:text-[#C5A46D] transition-colors">
+          🚚 <span>অর্ডার ট্র্যাক করুন</span>
+        </a>
+        <span class="opacity-40">|</span>
+        <a id="headerPhoneLink" href="tel:01712345678" class="flex items-center gap-1 hover:text-[#C5A46D] transition-colors tabular-nums">
+          📞 <span id="headerPhoneText">01712-345678</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Header Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div class="flex items-center justify-between gap-4">
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-9 h-9 rounded-full bg-[#762A43] flex items-center justify-center text-white font-serif text-lg font-bold shadow-xs">
+            অ
+          </div>
+          <div>
+            <span id="brandName" class="text-xl sm:text-2xl font-bold tracking-tight text-[#762A43] font-serif">
+              অরণ্যা ফ্যাশন
+            </span>
+            <span class="block text-[10px] tracking-wider text-[#C5A46D] uppercase font-medium">
+              Premium Fashion
+            </span>
+          </div>
+        </a>
+
+        <!-- Search Input -->
+        <div class="hidden md:flex flex-1 max-w-md mx-6 relative">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="পণ্য বা ক্যাটাগরি খুঁজুন (যেমন: সুতি থ্রি-পিস, সিল্ক শাড়ি)..."
+            class="w-full pl-4 pr-10 py-2.5 bg-[#F8F9FA] border border-gray-200 rounded-full text-xs text-[#252525] focus:outline-none focus:border-[#762A43] focus:bg-white transition-all"
+            onkeydown="if(event.key === 'Enter') window.location.href='products.html?q=' + encodeURIComponent(this.value)"
+          />
+          <button onclick="window.location.href='products.html?q=' + encodeURIComponent(document.getElementById('searchInput').value)" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#762A43]">
+            🔍
+          </button>
+        </div>
+
+        <!-- Navigation Actions -->
+        <div class="flex items-center gap-3">
+          <a href="track-order.html" class="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-gray-700 hover:text-[#762A43] px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+            🚚 <span>ট্র্যাকিং</span>
+          </a>
+
+          <!-- Cart Button -->
+          <button onclick="openCart()" class="relative flex items-center gap-2 bg-[#F7F0E8] hover:bg-[#ebdccf] text-[#762A43] px-4 py-2.5 rounded-full font-medium transition-all group shadow-xs cursor-pointer">
+            🛍️ <span id="cartCountBadge" class="text-xs font-bold tabular-nums">0</span>
+            <span class="hidden sm:inline text-xs font-semibold">ব্যাগ</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Menu -->
+    <nav class="hidden lg:block border-t border-gray-100 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ul class="flex items-center justify-center gap-8 py-2.5 text-xs font-semibold text-gray-700">
+          <li><a href="index.html" class="text-[#762A43] border-b-2 border-[#762A43] pb-1">হোম</a></li>
+          <li><a href="products.html?category=salwar-kameez" class="hover:text-[#762A43] transition-colors">সালোয়ার কামিজ</a></li>
+          <li><a href="products.html?category=sarees" class="hover:text-[#762A43] transition-colors">শাড়ি কালেকশন</a></li>
+          <li><a href="products.html?category=burqa-abaya" class="hover:text-[#762A43] transition-colors">বোরকা ও আবায়া</a></li>
+          <li><a href="products.html?category=kurtis" class="hover:text-[#762A43] transition-colors">কুর্তি কালেকশন</a></li>
+          <li><a href="products.html" class="hover:text-[#762A43] transition-colors">সকল পোশাক</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 3. Hero Fashion Banner -->
+  <section class="relative bg-[#F7F0E8] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Text content -->
+        <div class="space-y-6 text-center lg:text-left z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#C5A46D]/40 text-[#762A43] text-xs font-semibold shadow-xs">
+            ✨ <span>নতুন ঈদ ও উৎসব কালেকশন ২০২৬</span>
+          </div>
+
+          <h1 id="heroTitle" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#252525] tracking-tight leading-tight font-serif">
+            ঐতিহ্য ও আধুনিকতার অনন্য নারী ফ্যাশন
+          </h1>
+
+          <p id="heroSubtitle" class="text-xs sm:text-base text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            সেরা মানের কটন, সিল্ক ও জর্জেট কালেকশন এখন বিশেষ অফারে।
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <a href="products.html" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#762A43] hover:bg-[#5E2034] text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all">
+              <span>কালেকশন দেখুন</span> ➔
+            </a>
+            <a href="products.html?category=salwar-kameez" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-[#252525] font-semibold text-xs sm:text-sm text-center transition-all">
+              থ্রি-পিস কালেকশন
+            </a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 pt-6 border-t border-[#C5A46D]/30 max-w-md mx-auto lg:mx-0 text-center">
+            <div>
+              <span class="block text-base font-bold text-[#762A43] tabular-nums">১০০%</span>
+              <span class="text-[11px] text-gray-600">আসল ফেব্রিক্স</span>
+            </div>
+            <div>
+              <span class="block text-base font-bold text-[#762A43]">ক্যাশ অন</span>
+              <span class="text-[11px] text-gray-600">ডেলিভারি</span>
+            </div>
+            <div>
+              <span class="block text-base font-bold text-[#762A43] tabular-nums">৭২ ঘণ্টা</span>
+              <span class="text-[11px] text-gray-600">সারাদেশে ডেলিভারি</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="relative lg:h-[450px] flex items-center justify-center">
+          <div class="relative w-full max-w-md h-[400px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+            <img
+              id="heroImage"
+              src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80"
+              alt="Women Fashion Banner"
+              class="w-full h-full object-cover object-top"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white text-center sm:text-left">
+              <span class="text-xs uppercase tracking-widest text-[#C5A46D] font-bold">স্পেশাল কালেকশন</span>
+              <h3 class="text-xl font-bold font-serif">লাক্সারি উৎসব শাড়ি ও থ্রি-পিস</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Categories Grid -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold text-[#C5A46D] uppercase tracking-wider block mb-1">
+            ক্যাটাগরি অনুযায়ী ব্রাউজ করুন
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-[#252525] font-serif">
+            জনপ্রিয় ফ্যাশন ক্যাটাগরি
+          </h2>
+        </div>
+        <a href="products.html" class="text-xs font-semibold text-[#762A43] hover:underline">সব দেখুন ➔</a>
+      </div>
+
+      <div id="categoryGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. New Arrivals / Featured Products -->
+  <section class="py-14 bg-[#F8F9FA]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-[#762A43] uppercase tracking-wider block mb-1">লেটেস্ট কালেকশন</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#252525] font-serif">নতুন আকর্ষণীয় পোশাকসমূহ</h2>
+        <p class="text-xs sm:text-sm text-gray-500 mt-2">নিখুঁত কারুকাজ ও প্রিমিয়াম ফেব্রিকে তৈরি আমাদের সাম্প্রতিক কালেকশন</p>
+      </div>
+
+      <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="products.html" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white border border-[#762A43] text-[#762A43] hover:bg-[#762A43] hover:text-white font-semibold text-xs sm:text-sm transition-all shadow-xs">
+          <span>সকল পোশাক ব্রাউজ করুন</span> ➔
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Special Offer Banner -->
+  <section class="py-12 bg-[#762A43] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#C5A46D] text-[#252525] text-xs font-bold">
+            সীমিত সময়ের অফার
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-bold font-serif">
+            যেকোনো ৩টি থ্রি-পিস অর্ডারে ডেলিভারি ফ্রি!
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-200">
+            সারা বাংলাদেশে ঘরে বসেই কোনো অগ্রিম পেমেন্ট ছাড়াই অর্ডার করুন ক্যাশ অন ডেলিভারিতে।
+          </p>
+        </div>
+        <a href="products.html?category=salwar-kameez" class="shrink-0 px-8 py-3.5 rounded-xl bg-[#C5A46D] hover:bg-[#b8955d] text-[#252525] font-bold text-xs sm:text-sm shadow-md transition-all">
+          অফারটি নিন
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Value Badges & Footer -->
+  <footer class="bg-[#252525] text-white pt-14 pb-8 border-t-4 border-[#C5A46D] mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-gray-800">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-xs">
+        <div class="p-3 rounded-lg bg-white/5 space-y-1">
+          <span class="text-xl">🚚</span>
+          <h4 class="font-semibold text-white">সারা দেশে হোম ডেলিভারি</h4>
+          <p class="text-[11px] text-gray-400">ঢাকা: ২৪-৪৮ ঘণ্টা, বাইরে: ৭২ ঘণ্টা</p>
+        </div>
+        <div class="p-3 rounded-lg bg-white/5 space-y-1">
+          <span class="text-xl">🛡️</span>
+          <h4 class="font-semibold text-white">ক্যাশ অন ডেলিভারি</h4>
+          <p class="text-[11px] text-gray-400">পণ্য দেখে মূল্য পরিশোধ</p>
+        </div>
+        <div class="p-3 rounded-lg bg-white/5 space-y-1">
+          <span class="text-xl">🔄</span>
+          <h4 class="font-semibold text-white">সহজ এক্সচেঞ্জ সুবিধা</h4>
+          <p class="text-[11px] text-gray-400">সাইজ সমস্যায় দ্রুত পরিবর্তন</p>
+        </div>
+        <div class="p-3 rounded-lg bg-white/5 space-y-1">
+          <span class="text-xl">💬</span>
+          <h4 class="font-semibold text-white">লাইভ সাপোর্ট</h4>
+          <p class="text-[11px] text-gray-400">সকাল ১০টা থেকে রাত ১০টা</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+      <div class="space-y-3">
+        <span id="footerBrandName" class="text-lg font-bold font-serif text-[#F7F0E8] block">অরণ্যা ফ্যাশন</span>
+        <p class="text-gray-400 leading-relaxed">প্রিমিয়াম ওম্যানস ফ্যাশন ওয়্যার হাউস। আধুনিক ও ঐতিহ্যবাহী পোশাকের বিশ্বস্ত অনলাইন শপ।</p>
+        <p class="text-gray-300">📞 <span id="footerPhone">01712-345678</span></p>
+        <p class="text-gray-300">📍 <span id="footerAddress">ধানমন্ডি, ঢাকা - ১২০৯, বাংলাদেশ</span></p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-[#F7F0E8] uppercase tracking-wider mb-3">ক্যাটাগরি</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="products.html?category=salwar-kameez" class="hover:text-[#C5A46D]">সালোয়ার কামিজ</a></li>
+          <li><a href="products.html?category=sarees" class="hover:text-[#C5A46D]">শাড়ি কালেকশন</a></li>
+          <li><a href="products.html?category=burqa-abaya" class="hover:text-[#C5A46D]">বোরকা ও আবায়া</a></li>
+          <li><a href="products.html?category=kurtis" class="hover:text-[#C5A46D]">কুর্তি ও টিউনিক</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-[#F7F0E8] uppercase tracking-wider mb-3">তথ্য ও পলিসি</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="track-order.html" class="hover:text-[#C5A46D] text-white font-semibold">অর্ডার ট্র্যাকিং</a></li>
+          <li><a href="checkout.html" class="hover:text-[#C5A46D]">চেকআউট</a></li>
+          <li><a href="admin.html" class="hover:text-[#C5A46D] text-gray-400">🔒 অ্যাডমিন ড্যাশবোর্ড</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-[#F7F0E8] uppercase tracking-wider mb-3">কুরিয়ার পার্টনার</h4>
+        <p class="text-gray-400 mb-3">বিশ্বস্ত কুরিয়ার সার্ভিসের মাধ্যমে সমগ্র বাংলাদেশে ক্যাশ অন ডেলিভারি।</p>
+        <div class="flex flex-wrap gap-2 text-[10px] text-gray-300 font-semibold">
+          <span class="px-2 py-1 bg-white/10 rounded">Steadfast</span>
+          <span class="px-2 py-1 bg-white/10 rounded">Pathao</span>
+          <span class="px-2 py-1 bg-white/10 rounded">RedX</span>
+          <span class="px-2 py-1 bg-white/10 rounded">COD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center text-[11px] text-gray-500 border-t border-gray-800 pt-6">
+      © ২০২৬ <span id="copyBrandName">অরণ্যা ফ্যাশন</span>। সর্বস্বত্ব সংরক্ষিত।
+    </div>
+  </footer>
+
+  <!-- 8. Interactive Cart Flyout Drawer -->
+  <div id="cartDrawerBackdrop" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity" onclick="closeCart()"></div>
+  <div id="cartDrawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between bg-[#F7F0E8]/50">
+      <h3 class="text-sm font-bold text-[#252525] flex items-center gap-2">
+        🛍️ <span>শপিং ব্যাগ (<span id="cartDrawerCount">0</span>)</span>
+      </h3>
+      <button onclick="closeCart()" class="text-gray-400 hover:text-black p-1 text-base cursor-pointer">✕</button>
+    </div>
+
+    <div id="cartDrawerItems" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Dynamic Cart Items -->
+    </div>
+
+    <div class="p-4 border-t border-gray-100 bg-[#F8F9FA] space-y-3">
+      <div class="flex justify-between text-xs font-semibold">
+        <span class="text-gray-600">সাবটোটাল:</span>
+        <span id="cartDrawerSubtotal" class="text-sm font-bold text-[#762A43] tabular-nums">৳ ০</span>
+      </div>
+      <a href="checkout.html" class="w-full py-3.5 bg-[#762A43] hover:bg-[#5E2034] text-white rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2 shadow-md cursor-pointer">
+        <span>অর্ডার নিশ্চিত করুন (ক্যাশ অন ডেলিভারি)</span> ➔
+      </a>
+    </div>
+  </div>
+
+  <!-- Shared App JS -->
+  <script>
+    let appData = { products: [], categories: [], settings: {} };
+
+    // Toast UI
+    function showToast(title, msg) {
+      const t = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastMessage').innerText = msg;
+      t.classList.remove('translate-y-[-150%]');
+      setTimeout(() => {
+        t.classList.add('translate-y-[-150%]');
+      }, 3000);
+    }
+
+    // Cart Management in LocalStorage
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('wcs_cart') || '[]'); } catch(e) { return []; }
+    }
+    function saveCart(cart) {
+      localStorage.setItem('wcs_cart', JSON.stringify(cart));
+      updateCartUI();
+    }
+    function updateCartUI() {
+      const cart = getCart();
+      const count = cart.reduce((sum, it) => sum + it.quantity, 0);
+      const subtotal = cart.reduce((sum, it) => sum + (it.price * it.quantity), 0);
+
+      const countBadge = document.getElementById('cartCountBadge');
+      if (countBadge) countBadge.innerText = count;
+      const drawerCount = document.getElementById('cartDrawerCount');
+      if (drawerCount) drawerCount.innerText = count;
+      const drawerSubtotal = document.getElementById('cartDrawerSubtotal');
+      if (drawerSubtotal) drawerSubtotal.innerText = '৳ ' + subtotal.toLocaleString();
+
+      const container = document.getElementById('cartDrawerItems');
+      if (container) {
+        if (cart.length === 0) {
+          container.innerHTML = '<div class="py-12 text-center text-gray-400 text-xs">আপনার ব্যাগটি খালি</div>';
+        } else {
+          container.innerHTML = cart.map((it, idx) => `
+            <div class="flex gap-3 p-2.5 rounded-lg border border-gray-100 bg-white">
+              <img src="${it.imageUrl}" class="w-14 h-16 object-cover rounded bg-gray-50 shrink-0">
+              <div class="flex-1 min-w-0">
+                <h4 class="text-xs font-semibold text-[#252525] truncate">${it.nameBn || it.name}</h4>
+                <div class="text-[11px] text-gray-500 mt-0.5">সাইজ: ${it.size || 'Free'} | পরিমাণ: ${it.quantity}টি</div>
+                <div class="text-xs font-bold text-[#762A43] tabular-nums mt-1">৳ ${(it.price * it.quantity).toLocaleString()}</div>
+              </div>
+              <button onclick="removeFromCart(${idx})" class="text-gray-300 hover:text-red-500 text-xs p-1 cursor-pointer">🗑️</button>
+            </div>
+          `).join('');
+        }
+      }
+    }
+    function openCart() {
+      document.getElementById('cartDrawerBackdrop').classList.remove('hidden');
+      document.getElementById('cartDrawer').classList.remove('translate-x-full');
+      updateCartUI();
+    }
+    function closeCart() {
+      document.getElementById('cartDrawerBackdrop').classList.add('hidden');
+      document.getElementById('cartDrawer').classList.add('translate-x-full');
+    }
+
+    // 1. Quick Add to Cart Button (ব্যাগে রাখুন)
+    function addToCartQuick(prodId) {
+      const p = appData.products.find(x => x.id === prodId);
+      if (!p) return;
+
+      const cart = getCart();
+      const defaultVariant = (p.variants && p.variants.length > 0) ? p.variants[0] : null;
+      const chosenSize = defaultVariant ? defaultVariant.size : (p.availableSizes || 'Free Size');
+      const variantId = defaultVariant ? defaultVariant.id : null;
+      const price = p.salePrice || p.regularPrice;
+
+      const match = cart.find(x => x.productId === p.id && (!variantId || x.variantId === variantId));
+      if (match) {
+        match.quantity += 1;
+      } else {
+        cart.push({
+          productId: p.id,
+          variantId: variantId,
+          name: p.name,
+          nameBn: p.nameBn,
+          slug: p.slug,
+          imageUrl: p.images[0],
+          price: price,
+          size: chosenSize,
+          quantity: 1
+        });
+      }
+      saveCart(cart);
+      showToast('ব্যাগে যোগ করা হয়েছে!', `${p.nameBn} (${chosenSize}) ব্যাগে সফলভাবে যুক্ত হয়েছে।`);
+      openCart();
+    }
+
+    // 2. Direct Buy Now Button (অর্ডার করুন)
+    function buyNowQuick(prodId) {
+      const p = appData.products.find(x => x.id === prodId);
+      if (!p) return;
+
+      const cart = getCart();
+      const defaultVariant = (p.variants && p.variants.length > 0) ? p.variants[0] : null;
+      const chosenSize = defaultVariant ? defaultVariant.size : (p.availableSizes || 'Free Size');
+      const variantId = defaultVariant ? defaultVariant.id : null;
+      const price = p.salePrice || p.regularPrice;
+
+      const match = cart.find(x => x.productId === p.id && (!variantId || x.variantId === variantId));
+      if (match) {
+        match.quantity += 1;
+      } else {
+        cart.push({
+          productId: p.id,
+          variantId: variantId,
+          name: p.name,
+          nameBn: p.nameBn,
+          slug: p.slug,
+          imageUrl: p.images[0],
+          price: price,
+          size: chosenSize,
+          quantity: 1
+        });
+      }
+      saveCart(cart);
+      window.location.href = 'checkout.html';
+    }
+
+    function removeFromCart(idx) {
+      const cart = getCart();
+      cart.splice(idx, 1);
+      saveCart(cart);
+    }
+
+    // Load Data from PHP APIs
+    async function initPage() {
+      updateCartUI();
+      try {
+        const [prodRes, setRes] = await Promise.all([
+          fetch('api/products.php').then(r => r.json()),
+          fetch('api/settings.php').then(r => r.json())
+        ]);
+
+        appData.products = prodRes.products || [];
+        appData.categories = prodRes.categories || [];
+        appData.settings = setRes || {};
+
+        // Update settings in DOM
+        if (appData.settings.site_name) {
+          document.getElementById('brandName').innerText = appData.settings.site_name;
+          document.getElementById('footerBrandName').innerText = appData.settings.site_name;
+          document.getElementById('copyBrandName').innerText = appData.settings.site_name;
+        }
+        if (appData.settings.announcement_bn) {
+          document.getElementById('announcementText').innerText = appData.settings.announcement_bn;
+        }
+        if (appData.settings.site_phone) {
+          document.getElementById('headerPhoneText').innerText = appData.settings.site_phone;
+          document.getElementById('headerPhoneLink').href = 'tel:' + appData.settings.site_phone.replace(/[^0-9]/g, '');
+          document.getElementById('footerPhone').innerText = appData.settings.site_phone;
+        }
+        if (appData.settings.site_address) {
+          document.getElementById('footerAddress').innerText = appData.settings.site_address;
+        }
+        if (appData.settings.hero_title) {
+          document.getElementById('heroTitle').innerText = appData.settings.hero_title;
+        }
+        if (appData.settings.hero_subtitle) {
+          document.getElementById('heroSubtitle').innerText = appData.settings.hero_subtitle;
+        }
+        if (appData.settings.hero_banner_image) {
+          document.getElementById('heroImage').src = appData.settings.hero_banner_image;
+        }
+
+        // Render Categories Grid
+        const catGrid = document.getElementById('categoryGrid');
+        catGrid.innerHTML = appData.categories.map(cat => `
+          <a href="products.html?category=${cat.slug}" class="group relative rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 block" style="height: 250px;">
+            <img src="${cat.imageUrl}" alt="${cat.nameBn}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 text-white">
+              <h3 class="text-sm font-bold font-serif">${cat.nameBn}</h3>
+              <p class="text-[11px] text-gray-300 mt-0.5">কালেকশন দেখুন ➔</p>
+            </div>
+          </a>
+        `).join('');
+
+        // Render Products Grid with fixed aspect ratio and responsive equal heights
+        const prodGrid = document.getElementById('productsGrid');
+        prodGrid.innerHTML = appData.products.map(p => {
+          const price = p.salePrice || p.regularPrice;
+          const hasDiscount = p.salePrice && p.salePrice < p.regularPrice;
+          const discountPct = hasDiscount ? Math.round(((p.regularPrice - p.salePrice) / p.regularPrice) * 100) : 0;
+          return `
+            <div class="group bg-white rounded-2xl border border-gray-100 hover:border-[#C5A46D]/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden h-full">
+              <!-- Uniform Image Container -->
+              <a href="product.html?slug=${p.slug}" class="product-img-box block">
+                <img src="${p.images[0]}" alt="${p.nameBn}" class="transition-transform duration-500 group-hover:scale-105">
+                ${hasDiscount ? `<div class="absolute top-2.5 left-2.5 bg-[#762A43] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-md">${discountPct}% ছাড়</div>` : ''}
+                <div class="absolute bottom-2.5 left-2.5 bg-white/90 backdrop-blur-xs text-[#252525] text-[10px] font-medium px-2 py-0.5 rounded shadow-xs">${p.categoryNameBn || ''}</div>
+              </a>
+
+              <!-- Content and CTA Buttons -->
+              <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <a href="product.html?slug=${p.slug}" class="block group-hover:text-[#762A43] transition-colors">
+                    <h3 class="text-xs sm:text-sm font-semibold text-[#252525] line-clamp-2 leading-snug">${p.nameBn}</h3>
+                  </a>
+                  <div class="mt-2 flex items-baseline gap-2">
+                    <span class="text-sm sm:text-base font-bold text-[#762A43] tabular-nums">৳ ${price.toLocaleString()}</span>
+                    ${hasDiscount ? `<span class="text-xs text-gray-400 line-through tabular-nums">৳ ${p.regularPrice.toLocaleString()}</span>` : ''}
+                  </div>
+                </div>
+
+                <!-- Action Buttons: Order Now & Add to Bag -->
+                <div class="mt-4 grid grid-cols-2 gap-2 pt-2.5 border-t border-gray-100">
+                  <button type="button" onclick="buyNowQuick('${p.id}')" class="w-full py-2.5 rounded-xl bg-[#762A43] hover:bg-[#5E2034] text-white text-[11px] font-bold text-center flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer">
+                    অর্ডার করুন
+                  </button>
+                  <button type="button" onclick="addToCartQuick('${p.id}')" class="w-full py-2.5 rounded-xl border border-gray-200 text-gray-700 hover:border-[#762A43] hover:text-[#762A43] hover:bg-[#F7F0E8]/50 text-[11px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer">
+                    🛍️ ব্যাগে রাখুন
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error("Init Error:", err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>

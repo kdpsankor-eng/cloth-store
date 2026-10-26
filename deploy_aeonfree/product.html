@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পোশাকের বিবরণ | অরণ্যা ফ্যাশন</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Hind Siliguri', 'Outfit', sans-serif; color: #252525; }
+    .tabular-nums { font-family: 'Outfit', 'Hind Siliguri', sans-serif; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="min-h-full flex flex-col bg-white">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 shadow-xs sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-[#762A43] text-white flex items-center justify-center font-serif font-bold">অ</div>
+        <span class="text-xl font-bold font-serif text-[#762A43]">অরণ্যা ফ্যাশন</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="products.html" class="text-xs font-semibold text-gray-700 hover:text-[#762A43]">সকল কালেকশন</a>
+        <a href="checkout.html" class="bg-[#F7F0E8] text-[#762A43] px-3.5 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-xs">
+          🛍️ <span id="cartCountBadge">0</span> ব্যাগ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+    <div id="loadingBox" class="py-24 text-center text-xs text-gray-500">লোড হচ্ছে...</div>
+
+    <div id="productContent" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <!-- 1. Left: Image Gallery with 3:4 aspect ratio -->
+      <div class="space-y-4">
+        <div class="relative w-full rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-md" style="aspect-ratio: 3/4; max-height: 520px;">
+          <img id="mainImage" src="" class="w-full h-full object-cover object-top">
+          <div id="pdpDiscountBadge" class="hidden absolute top-3 left-3 bg-[#762A43] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md"></div>
+        </div>
+        <div id="thumbnailRow" class="flex gap-3 overflow-x-auto pb-1 scrollbar-none">
+          <!-- Thumbnails -->
+        </div>
+      </div>
+
+      <!-- 2. Right: Product Details & Actions -->
+      <div class="space-y-6">
+        <div>
+          <span id="pdpCategory" class="text-xs font-semibold text-[#C5A46D] uppercase tracking-wider"></span>
+          <h1 id="pdpTitle" class="text-2xl sm:text-3xl font-bold text-[#252525] font-serif mt-1 leading-snug"></h1>
+          <p class="text-xs text-gray-400 mt-1">প্রোডাক্ট কোড: <span id="pdpSku" class="font-mono text-gray-600"></span></p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="p-4 rounded-xl bg-[#F7F0E8]/50 border border-[#C5A46D]/30 flex items-baseline gap-3">
+          <span id="pdpSalePrice" class="text-2xl sm:text-3xl font-extrabold text-[#762A43] tabular-nums"></span>
+          <span id="pdpRegularPrice" class="text-sm text-gray-400 line-through tabular-nums"></span>
+          <span class="text-xs font-medium text-green-700 bg-green-50 px-2 py-0.5 rounded ml-auto">ইন স্টক (মজুদ আছে)</span>
+        </div>
+
+        <!-- Size Selector -->
+        <div id="sizeSection" class="p-4 rounded-xl border border-gray-100 bg-[#F8F9FA] space-y-2.5">
+          <div class="flex justify-between items-center">
+            <label class="text-xs font-bold text-[#252525]">সাইজ নির্বাচন করুন: <span class="text-emerald-600 font-normal">(ডিফল্ট সিলেক্টেড)</span></label>
+            <span id="selectedSizeLabel" class="text-xs text-[#762A43] font-semibold"></span>
+          </div>
+          <div id="sizeButtonsContainer" class="flex flex-wrap gap-2">
+            <!-- Buttons -->
+          </div>
+        </div>
+
+        <!-- Free Size Box (for Sarees) -->
+        <div id="freeSizeSection" class="hidden p-3 bg-gray-50 rounded-lg border border-gray-100 text-xs text-gray-600">
+          📏 <span class="font-semibold text-gray-800">সাইজ বিবরণ:</span> <span id="freeSizeText">রেগুলার / ফ্রি সাইজ</span>
+        </div>
+
+        <!-- Quantity & CTAs -->
+        <div class="space-y-3.5 pt-2">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-semibold text-gray-700">পরিমাণ:</span>
+            <div class="flex items-center border border-gray-200 rounded-lg bg-white">
+              <button onclick="adjustQty(-1)" class="p-2 hover:bg-gray-100 text-gray-600 text-xs font-bold cursor-pointer">－</button>
+              <span id="qtyDisplay" class="px-4 text-sm font-bold tabular-nums">1</span>
+              <button onclick="adjustQty(1)" class="p-2 hover:bg-gray-100 text-gray-600 text-xs font-bold cursor-pointer">＋</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <button onclick="handleBuyNow()" class="w-full py-4 px-6 rounded-xl bg-[#762A43] hover:bg-[#5E2034] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
+              <span>সরাসরি অর্ডার করুন</span> ➔
+            </button>
+            <button onclick="handleAddToCart()" id="btnAddToCart" class="w-full py-4 px-6 rounded-xl border-2 border-[#762A43] text-[#762A43] hover:bg-[#F7F0E8] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
+              🛍️ <span>ব্যাগে যোগ করুন</span>
+            </button>
+          </div>
+
+          <a id="btnWhatsApp" href="#" target="_blank" class="w-full py-2.5 px-4 rounded-xl border border-green-200 bg-green-50 hover:bg-green-100 text-green-800 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+            💬 <span>হোয়াটসঅ্যাপে সরাসরি অর্ডার করতে ক্লিক করুন</span>
+          </a>
+        </div>
+
+        <!-- Description Accordion -->
+        <div class="pt-4 border-t border-gray-100 space-y-3">
+          <div class="p-4 rounded-xl bg-white border border-gray-100">
+            <h4 class="text-xs font-bold text-[#762A43] uppercase tracking-wider mb-2">পোশাকের বিবরণ</h4>
+            <p id="pdpDescription" class="text-xs text-gray-700 leading-relaxed"></p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-[#F8F9FA] border border-gray-100">
+              <p class="font-semibold text-gray-800">🚚 হোম ডেলিভারি</p>
+              <p class="text-[11px] text-gray-500 mt-0.5">ঢাকা: ৮০৳ | বাইরে: ১৫০৳</p>
+            </div>
+            <div class="p-3 rounded-xl bg-[#F8F9FA] border border-gray-100">
+              <p class="font-semibold text-gray-800">🛡️ ক্যাশ অন ডেলিভারি</p>
+              <p class="text-[11px] text-gray-500 mt-0.5">পণ্য দেখে মূল্য পরিশোধ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-[#252525] text-white py-6 text-center text-xs mt-auto">
+    <p>© ২০২৬ অরণ্যা ফ্যাশন। সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
+
+  <script>
+    let currentProduct = null;
+    let selectedVariant = null;
+    let quantity = 1;
+
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('wcs_cart') || '[]'); } catch(e) { return []; }
+    }
+    function updateBadge() {
+      const cart = getCart();
+      document.getElementById('cartCountBadge').innerText = cart.reduce((s, x) => s + x.quantity, 0);
+    }
+
+    function adjustQty(n) {
+      quantity = Math.max(1, quantity + n);
+      document.getElementById('qtyDisplay').innerText = quantity;
+    }
+
+    async function loadProduct() {
+      updateBadge();
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      if (!slug) { window.location.href = 'products.html'; return; }
+
+      try {
+        const res = await fetch('api/products.php?slug=' + encodeURIComponent(slug)).then(r => r.json());
+        if (!res.product) { window.location.href = 'products.html'; return; }
+
+        currentProduct = res.product;
+        renderProductDetails();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderProductDetails() {
+      document.getElementById('loadingBox').classList.add('hidden');
+      document.getElementById('productContent').classList.remove('hidden');
+
+      const p = currentProduct;
+      const price = p.salePrice || p.regularPrice;
+      const hasDiscount = p.salePrice && p.salePrice < p.regularPrice;
+      const discountPct = hasDiscount ? Math.round(((p.regularPrice - p.salePrice) / p.regularPrice) * 100) : 0;
+
+      document.title = p.nameBn + ' | অরণ্যা ফ্যাশন';
+      document.getElementById('pdpTitle').innerText = p.nameBn;
+      document.getElementById('pdpCategory').innerText = p.categoryNameBn || '';
+      document.getElementById('pdpSku').innerText = p.sku;
+      document.getElementById('pdpDescription').innerText = p.description;
+      document.getElementById('mainImage').src = p.images[0];
+
+      document.getElementById('pdpSalePrice').innerText = '৳ ' + price.toLocaleString();
+      if (hasDiscount) {
+        document.getElementById('pdpRegularPrice').innerText = '৳ ' + p.regularPrice.toLocaleString();
+        document.getElementById('pdpDiscountBadge').innerText = discountPct + '% স্পেশাল ছাড়';
+        document.getElementById('pdpDiscountBadge').classList.remove('hidden');
+      }
+
+      // Thumbnails
+      const thumbRow = document.getElementById('thumbnailRow');
+      thumbRow.innerHTML = p.images.map((img, idx) => `
+        <img src="${img}" onclick="document.getElementById('mainImage').src='${img}'" class="w-16 h-20 object-cover rounded-lg border-2 border-transparent hover:border-[#762A43] cursor-pointer bg-gray-50">
+      `).join('');
+
+      // Size Variants
+      if (p.hasSizeVariants && p.variants && p.variants.length > 0) {
+        document.getElementById('sizeSection').classList.remove('hidden');
+        document.getElementById('freeSizeSection').classList.add('hidden');
+
+        const btnContainer = document.getElementById('sizeButtonsContainer');
+        btnContainer.innerHTML = p.variants.map(v => `
+          <button type="button" onclick="selectVariant('${v.id}')" id="btn_var_${v.id}" class="var-btn py-2 px-4 rounded-lg text-xs font-semibold border border-gray-200 hover:border-[#762A43] bg-white transition-all cursor-pointer">
+            ${v.size} ${v.color ? `<span class="opacity-70 text-[10px]">(${v.color})</span>` : ''}
+          </button>
+        `).join('');
+
+        // Automatically select first size by default
+        selectVariant(p.variants[0].id);
+      } else {
+        document.getElementById('sizeSection').classList.add('hidden');
+        document.getElementById('freeSizeSection').classList.remove('hidden');
+        document.getElementById('freeSizeText').innerText = p.availableSizes || 'রেগুলার / ফ্রি সাইজ';
+      }
+
+      // WhatsApp link
+      const waMsg = encodeURIComponent(`হ্যালো! আমি এই পোশাকটি অর্ডার করতে চাই:\n\n*${p.nameBn}*\nকোড: ${p.sku}\nমূল্য: ৳ ${price}\nলিংক: ${window.location.href}`);
+      document.getElementById('btnWhatsApp').href = 'https://wa.me/8801712345678?text=' + waMsg;
+    }
+
+    function selectVariant(varId) {
+      selectedVariant = currentProduct.variants.find(x => x.id === varId);
+      document.getElementById('selectedSizeLabel').innerText = 'সিলেক্টেড: ' + (selectedVariant ? selectedVariant.size : '');
+
+      document.querySelectorAll('.var-btn').forEach(btn => {
+        btn.classList.remove('bg-[#762A43]', 'text-white', 'border-[#762A43]');
+        btn.classList.add('bg-white', 'text-gray-800');
+      });
+
+      const activeBtn = document.getElementById('btn_var_' + varId);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-gray-800');
+        activeBtn.classList.add('bg-[#762A43]', 'text-white', 'border-[#762A43]');
+      }
+    }
+
+    function handleAddToCart() {
+      const cart = getCart();
+      const p = currentProduct;
+      const price = p.salePrice || p.regularPrice;
+      const chosenSize = selectedVariant ? selectedVariant.size : (p.availableSizes || 'Free Size');
+      const varId = selectedVariant ? selectedVariant.id : null;
+
+      const match = cart.find(x => x.productId === p.id && (!varId || x.variantId === varId));
+      if (match) {
+        match.quantity += quantity;
+      } else {
+        cart.push({
+          productId: p.id,
+          variantId: varId,
+          name: p.name,
+          nameBn: p.nameBn,
+          slug: p.slug,
+          imageUrl: p.images[0],
+          price: price,
+          size: chosenSize,
+          quantity: quantity
+        });
+      }
+
+      localStorage.setItem('wcs_cart', JSON.stringify(cart));
+      updateBadge();
+
+      const btn = document.getElementById('btnAddToCart');
+      btn.innerText = '✓ ব্যাগে যুক্ত হয়েছে';
+      btn.classList.add('bg-green-50', 'text-green-700', 'border-green-600');
+      setTimeout(() => {
+        btn.innerHTML = '🛍️ <span>ব্যাগে যোগ করুন</span>';
+        btn.classList.remove('bg-green-50', 'text-green-700', 'border-green-600');
+      }, 2000);
+    }
+
+    function handleBuyNow() {
+      handleAddToCart();
+      window.location.href = 'checkout.html';
+    }
+
+    window.addEventListener('DOMContentLoaded', loadProduct);
+  </script>
+</body>
+</html>

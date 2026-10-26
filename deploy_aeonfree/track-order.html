@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>লাইভ অর্ডার ট্র্যাকিং | অরণ্যা ফ্যাশন</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Hind Siliguri', 'Outfit', sans-serif; color: #252525; }
+    .tabular-nums { font-family: 'Outfit', 'Hind Siliguri', sans-serif; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="min-h-full flex flex-col bg-[#F8F9FA]">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 shadow-xs">
+    <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-[#762A43] text-white flex items-center justify-center font-serif font-bold">অ</div>
+        <span class="text-xl font-bold font-serif text-[#762A43]">অরণ্যা ফ্যাশন</span>
+      </a>
+      <a href="products.html" class="text-xs font-semibold text-gray-600 hover:text-[#762A43]">পোশাক কালেকশন</a>
+    </div>
+  </header>
+
+  <!-- Main Tracking -->
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-10 w-full space-y-6">
+    <div class="text-center space-y-2">
+      <div class="text-3xl">🚚</div>
+      <h1 class="text-2xl sm:text-3xl font-bold font-serif text-[#252525]">লাইভ অর্ডার ট্র্যাকিং</h1>
+      <p class="text-xs text-gray-500">আপনার অর্ডার নাম্বার ও মোবাইল নাম্বার দিয়ে পার্সেলের বর্তমান অবস্থান জানুন।</p>
+    </div>
+
+    <!-- Search Form -->
+    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-xs space-y-4">
+      <form onsubmit="trackOrder(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+        <div class="sm:col-span-5">
+          <label class="block text-xs font-semibold text-gray-700 mb-1">অর্ডার নাম্বার <span class="text-red-500">*</span></label>
+          <input type="text" id="trackOrderNo" required placeholder="যেমন: WCS-261024-5997" class="w-full p-2.5 rounded-lg border border-gray-200 text-xs font-mono focus:outline-none focus:border-[#762A43]">
+        </div>
+        <div class="sm:col-span-4">
+          <label class="block text-xs font-semibold text-gray-700 mb-1">মোবাইল নাম্বার <span class="text-red-500">*</span></label>
+          <input type="tel" id="trackPhone" required placeholder="017XXXXXXXX" class="w-full p-2.5 rounded-lg border border-gray-200 text-xs tabular-nums focus:outline-none focus:border-[#762A43]">
+        </div>
+        <div class="sm:col-span-3 flex items-end">
+          <button type="submit" id="btnTrack" class="w-full py-2.5 bg-[#762A43] hover:bg-[#5E2034] text-white text-xs font-bold rounded-lg shadow-xs cursor-pointer">
+            ট্র্যাক করুন
+          </button>
+        </div>
+      </form>
+
+      <div id="trackError" class="hidden p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-medium"></div>
+    </div>
+
+    <!-- Timeline Result Card -->
+    <div id="timelineCard" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-md space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between pb-4 border-b border-gray-100 gap-2">
+        <div>
+          <span class="text-xs text-gray-400">অর্ডার ট্র্যাকিং:</span>
+          <h3 id="resOrderNo" class="text-lg font-bold font-mono text-[#762A43]"></h3>
+          <p id="resCustName" class="text-xs text-gray-600 mt-0.5"></p>
+        </div>
+        <div class="sm:text-right">
+          <span class="text-xs text-gray-400 block">মোট প্রদেয় বিল:</span>
+          <span id="resTotal" class="text-lg font-bold text-[#252525] tabular-nums"></span>
+          <span class="block text-[11px] text-green-700 font-medium">ক্যাশ অন ডেলিভারি (বকেয়া)</span>
+        </div>
+      </div>
+
+      <!-- 5 Steps Milestone Timeline -->
+      <div id="timelineSteps" class="py-4 space-y-4">
+        <h4 class="text-xs font-bold text-[#C5A46D] uppercase tracking-wider">ডেলিভারি টাইমলাইন</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 text-xs" id="milestoneContainer">
+          <!-- Milestones -->
+        </div>
+      </div>
+
+      <!-- Courier Partner Info -->
+      <div id="courierBox" class="hidden p-3 rounded-xl bg-[#F7F0E8]/70 border border-[#C5A46D]/40 text-xs flex justify-between items-center">
+        <div>
+          <span class="text-gray-500 block text-[10px]">কুরিয়ার পার্টনার:</span>
+          <span id="resCourierName" class="font-bold text-gray-900"></span>
+        </div>
+        <div class="text-right">
+          <span class="text-gray-500 block text-[10px]">ট্র্যাকিং কোড:</span>
+          <span id="resTrackingCode" class="font-mono font-bold text-[#762A43]"></span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-[#252525] text-white py-6 text-center text-xs mt-auto">
+    <p>© ২০২৬ অরণ্যা ফ্যাশন। সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
+
+  <script>
+    const milestones = [
+      { key: "PENDING", title: "অর্ডার গৃহীত", desc: "আমরা অর্ডারটি পেয়েছি" },
+      { key: "CONFIRMED", title: "কনফার্মড", desc: "কল দিয়ে নিশ্চিত করা হয়েছে" },
+      { key: "PROCESSING", title: "প্যাকেজিং হচ্ছে", desc: "প্যাকিং সম্পন্ন হচ্ছে" },
+      { key: "SHIPPED", title: "কুরিয়ারে পাঠানো হয়েছে", desc: "ডেলিভারিম্যানের পথে" },
+      { key: "DELIVERED", title: "ডেলিভারি সম্পন্ন", desc: "গ্রাহক পণ্য বুঝে পেয়েছেন" }
+    ];
+
+    function getStepIndex(st) {
+      if (st === 'PENDING') return 0;
+      if (st === 'CONFIRMED') return 1;
+      if (st === 'PROCESSING') return 2;
+      if (st === 'SHIPPED') return 3;
+      if (st === 'DELIVERED') return 4;
+      return -1;
+    }
+
+    async function trackOrder(e) {
+      if (e) e.preventDefault();
+      const orderNo = document.getElementById('trackOrderNo').value.trim();
+      const phone = document.getElementById('trackPhone').value.trim();
+      const errBox = document.getElementById('trackError');
+      const card = document.getElementById('timelineCard');
+
+      errBox.classList.add('hidden');
+      card.classList.add('hidden');
+
+      if (!orderNo || !phone) {
+        errBox.innerText = 'অর্ডার নাম্বার এবং মোবাইল নাম্বার উভয়ই লিখুন।';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      const btn = document.getElementById('btnTrack');
+      btn.innerText = 'খোঁজা হচ্ছে...';
+
+      try {
+        const res = await fetch(`api/orders.php?action=track&orderNumber=${encodeURIComponent(orderNo)}&phone=${encodeURIComponent(phone)}`);
+        const data = await res.json();
+
+        if (res.ok && data.order) {
+          const ord = data.order;
+          document.getElementById('resOrderNo').innerText = ord.orderNumber;
+          document.getElementById('resCustName').innerText = 'গ্রাহক: ' + ord.customerName + ' (' + ord.customerPhone + ')';
+          document.getElementById('resTotal').innerText = '৳ ' + ord.totalPayable.toLocaleString();
+
+          // Render Steps
+          const currentIdx = getStepIndex(ord.orderStatus);
+          const container = document.getElementById('milestoneContainer');
+          container.innerHTML = milestones.map((m, idx) => {
+            const isDone = currentIdx >= idx;
+            const isCurrent = currentIdx === idx;
+            return `
+              <div class="flex items-center sm:flex-col text-left sm:text-center gap-2.5 p-2 rounded-lg ${isDone ? 'bg-green-50/50' : 'bg-gray-50'}">
+                <div class="w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${isDone ? 'bg-[#762A43] text-white' : 'bg-gray-200 text-gray-500'}">
+                  ${isDone ? '✓' : idx + 1}
+                </div>
+                <div>
+                  <h5 class="font-bold text-[11px] ${isCurrent ? 'text-[#762A43]' : isDone ? 'text-gray-900' : 'text-gray-400'}">${m.title}</h5>
+                  <p class="text-[9px] text-gray-400">${m.desc}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          // Courier
+          if (ord.courierName) {
+            document.getElementById('courierBox').classList.remove('hidden');
+            document.getElementById('resCourierName').innerText = ord.courierName;
+            document.getElementById('resTrackingCode').innerText = ord.trackingCode || 'প্রসেসিংয়ে আছে';
+          } else {
+            document.getElementById('courierBox').classList.add('hidden');
+          }
+
+          card.classList.remove('hidden');
+        } else {
+          errBox.innerText = data.error || 'অর্ডারটি পাওয়া যায়নি। সঠিক তথ্য দিন।';
+          errBox.classList.remove('hidden');
+        }
+      } catch (err) {
+        errBox.innerText = 'সার্ভার সমস্যা হয়েছে। আবার চেষ্টা করুন।';
+        errBox.classList.remove('hidden');
+      } finally {
+        btn.innerText = 'ট্র্যাক করুন';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const p = new URLSearchParams(window.location.search);
+      const o = p.get('orderNumber');
+      const ph = p.get('phone');
+      if (o) document.getElementById('trackOrderNo').value = o;
+      if (ph) {
+        document.getElementById('trackPhone').value = ph;
+        trackOrder();
+      }
+    });
+  </script>
+</body>
+</html>
